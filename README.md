@@ -1,4 +1,4 @@
-# Selefra Provider Digitalocean
+# Selefra Provider Digital Ocean
 
 Use this repo as a raw reference to **tables and schema** for digitalocean cloud resources. [Here's](https://github.com/selefra/selefra-provider-digitalocean/blob/main/docs/tables/digitalocean.md) a summary of full coverage. 
 As an experienced user, the tables are especially helpful when you're writing SQL queries for specific task. 
