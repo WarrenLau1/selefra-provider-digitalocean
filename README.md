@@ -2,9 +2,7 @@
 
 Use this repo as a raw reference to **tables and schema** for digitalocean cloud resources. [Here's](https://github.com/selefra/selefra-provider-digitalocean/blob/main/docs/tables/digitalocean.md) a summary of full coverage. 
 As an experienced user, the tables are especially helpful when you're writing SQL queries for specific task. 
-If you're just starting, try some of the pre-written rules before writing customized ones:
-
-- [Digitalocean misconfiguration]()
+If you're just starting, navigate to our dodcumentation for example usage.
  
 ## Documentation
 
@@ -14,8 +12,9 @@ See [Docs](https://selefra.io/docs) for best practices and detailed instructions
 
 Selefra is a community-driven project, we welcome you to open a [GitHub Issue](https://github.com/selefra/selefra/issues/new/choose) to report a bug, suggest an improvement, or request new feature.
 
--  Join [Selefra Community](https://selefra.slack.com) on Slack. We host `Community Hour` for tutorials and Q&As on regular basis.
+-  Join [Selefra Community](https://selefra.io/community/join) on Slack. We host `Community Hour` for tutorials and Q&As on regular basis.
 -  Follow us on [Twitter](https://twitter.com/SelefraCorp) and share your thoughts！
+-  Email us at support@selefra.io
 
 ## CONTRIBUTING
 
