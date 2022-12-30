@@ -1,9 +1,5 @@
 package digitalocean_client
 
-type Configs struct {
-	Providers []Config `yaml:"providers"  mapstructure:"providers"`
-}
-
 type Config struct {
 	Token             string   `yaml:"token"  mapstructure:"token"`
 	SpacesRegions     []string `yaml:"spaces_regions"  mapstructure:"spaces_regions"`

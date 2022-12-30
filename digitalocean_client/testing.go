@@ -43,7 +43,7 @@ func newTestProvider(t *testing.T, table *schema.Table, createService func(t *te
 				return ``
 			},
 			Validation: func(ctx context.Context, config *viper.Viper) *schema.Diagnostics {
-				var digitaloceanConfig Configs
+				var digitaloceanConfig Config
 				err := config.Unmarshal(&digitaloceanConfig)
 				if err != nil {
 					return schema.NewDiagnostics().AddErrorMsg(constants.Analysisconfigerrs, err.Error())

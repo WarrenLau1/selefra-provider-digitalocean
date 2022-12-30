@@ -20,13 +20,10 @@ func GetProvider() *provider.Provider {
 		TableList: GenTables(),
 		ClientMeta: schema.ClientMeta{
 			InitClient: func(ctx context.Context, clientMeta *schema.ClientMeta, config *viper.Viper) ([]any, *schema.Diagnostics) {
-				var digitaloceanConfig digitalocean_client.Configs
+				var digitaloceanConfig digitalocean_client.Config
 				err := config.Unmarshal(&digitaloceanConfig)
 				if err != nil {
 					return nil, schema.NewDiagnostics().AddErrorMsg(constants.Analysisconfigerrs, err.Error())
-				}
-				if len(digitaloceanConfig.Providers) == 0 {
-					digitaloceanConfig.Providers = append(digitaloceanConfig.Providers, digitalocean_client.Config{})
 				}
 
 				clients, err := digitalocean_client.NewClients(digitaloceanConfig)
@@ -56,7 +53,7 @@ func GetProvider() *provider.Provider {
 #    spaces_access_key_id: "<YOUR_SPACES_ACCESS_KEY_ID>" # env SPACES_ACCESS_KEY_ID`
 			},
 			Validation: func(ctx context.Context, config *viper.Viper) *schema.Diagnostics {
-				var digitaloceanConfig digitalocean_client.Configs
+				var digitaloceanConfig digitalocean_client.Config
 				err := config.Unmarshal(&digitaloceanConfig)
 				if err != nil {
 					return schema.NewDiagnostics().AddErrorMsg(constants.Analysisconfigerrs, err.Error())
