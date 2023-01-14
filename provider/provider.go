@@ -2,6 +2,8 @@ package provider
 
 import (
 	"context"
+	"os"
+	"strings"
 
 	"github.com/selefra/selefra-provider-sdk/provider"
 	"github.com/selefra/selefra-provider-sdk/provider/schema"
@@ -24,6 +26,46 @@ func GetProvider() *provider.Provider {
 				err := config.Unmarshal(&digitaloceanConfig)
 				if err != nil {
 					return nil, schema.NewDiagnostics().AddErrorMsg(constants.Analysisconfigerrs, err.Error())
+				}
+
+				if digitaloceanConfig.Token == "" {
+					digitaloceanConfig.Token = os.Getenv("DIGITALOCEAN_TOKEN")
+				}
+
+				if digitaloceanConfig.Token == "" {
+					return nil, schema.NewDiagnostics().AddErrorMsg("missing Token in configuration")
+				}
+
+				if len(digitaloceanConfig.SpacesRegions) == 0 {
+					regionsData := os.Getenv("DIGITALOCEAN_SPACES_REGIONS")
+
+					var regionsList []string
+
+					if regionsData != "" {
+						regionsList = strings.Split(regionsData, ",")
+					}
+
+					digitaloceanConfig.SpacesRegions = regionsList
+				}
+
+				if len(digitaloceanConfig.SpacesRegions) == 0 {
+					return nil, schema.NewDiagnostics().AddErrorMsg("missing SpacesRegions in configuration")
+				}
+
+				if digitaloceanConfig.SpacesAccessKey == "" {
+					digitaloceanConfig.SpacesAccessKey = os.Getenv("DIGITALOCEAN_SPACES_ACCESS_KEY")
+				}
+
+				if digitaloceanConfig.SpacesAccessKey == "" {
+					return nil, schema.NewDiagnostics().AddErrorMsg("missing SpacesAccessKey in configuration")
+				}
+
+				if digitaloceanConfig.SpacesAccessKeyId == "" {
+					digitaloceanConfig.SpacesAccessKeyId = os.Getenv("DIGITALOCEAN_SPACES_ACCESS_KEY_ID")
+				}
+
+				if digitaloceanConfig.SpacesAccessKeyId == "" {
+					return nil, schema.NewDiagnostics().AddErrorMsg("missing SpacesAccessKeyId in configuration")
 				}
 
 				clients, err := digitalocean_client.NewClients(digitaloceanConfig)

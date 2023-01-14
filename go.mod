@@ -1,12 +1,10 @@
 module github.com/selefra/selefra-provider-digitalocean
 
-go 1.18
+go 1.19
 
 require (
 	github.com/avast/retry-go v3.0.0+incompatible
 	github.com/aws/aws-sdk-go-v2 v1.17.1
-	github.com/aws/aws-sdk-go-v2/config v1.18.0
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.29.2
 	github.com/aws/smithy-go v1.13.4
 	github.com/digitalocean/godo v1.89.0
 	github.com/golang/mock v1.6.0
